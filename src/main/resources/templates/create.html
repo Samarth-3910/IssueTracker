@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Issue</title>
+    <th:block th:replace="~{fragments :: header-css}"></th:block>
+</head>
+<body>
+
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+
+            <a href="/" class="btn-riot-back mb-4 d-inline-block">← Back to Dashboard</a>
+
+            <div class="riot-form-panel">
+                <h2 class="mb-5" style="color: var(--val-red); font-family: 'Segoe UI', sans-serif; font-weight: 700;">Report a Bug</h2>
+
+                <form action="#" th:action="@{/save}" th:object="${issue}" method="POST" enctype="multipart/form-data">
+
+                    <div class="mb-4">
+                        <label class="riot-label d-block mb-2">Issue Title</label>
+                        <input type="text" th:field="*{title}" class="form-control riot-input" placeholder="e.g., Jett Dash clipping on Ascent" required>
+                        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger small mt-1"></div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="riot-label d-block mb-2">Category</label>
+                        <select th:field="*{category}" class="form-select riot-input">
+                            <option value="Agent Bug">Agent Ability Bug</option>
+                            <option value="Map Glitch">Map Exploit / Glitch</option>
+                            <option value="Gun/Skin Issue">Gun / Skin Visual Bug</option>
+                            <option value="Network">Connection / Ping / Vanguard</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="riot-label d-block mb-2">Description</label>
+                        <textarea th:field="*{description}" class="form-control riot-input" rows="5" placeholder="Provide steps to reproduce the bug..."></textarea>
+                        <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger small mt-1"></div>
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="riot-label d-block mb-2">Attach Evidence (Optional)</label>
+                        <input type="file" name="image" accept="image/png, image/jpeg" class="form-control riot-input" style="padding: 8px 12px !important;" />
+                    </div>
+
+                    <button type="submit" class="btn-valorant w-100" style="padding: 15px; font-size: 1.1rem;">SUBMIT REPORT</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

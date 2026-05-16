@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Issue Tracker</title>
+    <!-- CALLING THE REUSABLE CSS FRAGMENT -->
+    <th:block th:replace="~{fragments :: header-css}"></th:block>
+</head>
+<body>
+
+<!-- CALLING THE REUSABLE NAVBAR FRAGMENT -->
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div class="container mt-5">
+    <h2 style="color: var(--val-red); font-family: 'Oswald', sans-serif;">ALL ISSUES</h2>
+
+    <!-- SLEEK DARK SEARCH BAR -->
+    <form th:action="@{/}" method="get" class="mb-4 mt-3 d-flex w-50">
+        <input type="text" name="keyword" th:value="${keyword}" class="form-control me-2 riot-search-input" placeholder="Search by title...">
+        <button type="submit" class="btn-riot-save me-2">Search</button>
+        <a href="/" class="btn-riot-save text-decoration-none text-center" style="border-color: #333;">Clear</a>
+    </form>
+
+    <!-- CUSTOM RIOT TABLE -->
+    <div class="riot-panel p-0" style="overflow: hidden;">
+        <table class="riot-table">
+            <thead>
+            <tr>
+                <th class="ps-4">ID</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Created</th>
+                <th>Status</th>
+                <th class="text-end pe-4">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="issue : ${listIssues}">
+                <td class="ps-4" style="color: #a0a0a0;" th:text="'#' + ${issue.id}"></td>
+
+                <td th:text="${issue.title}" style="font-weight: 600; color: #fff;"></td>
+
+                <td th:text="${issue.category}"></td>
+
+                <td th:text="${#temporals.format(issue.createdAt, 'dd-MMM-yyyy')}"></td>
+
+                <td>
+                    <!-- Sharp Minimal Badge -->
+                    <span class="status-tag"
+                          th:text="${issue.status}"
+                          th:classappend="${issue.status == 'Open'} ? 'status-open' : 'status-other'">
+                        </span>
+                </td>
+
+                <td class="text-end pe-4">
+                    <!-- Subtle hover text link instead of a giant red button -->
+                    <a th:href="@{/issue/{id}(id=${issue.id})}" class="riot-action-link">Details ➔</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

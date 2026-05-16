@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Riot Registration</title>
+    <th:block th:replace="~{fragments :: header-css}"></th:block>
+</head>
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+
+            <div class="riot-form-panel text-center pb-5 pt-5">
+
+                <h1 style="color: var(--val-red); font-family: 'Oswald', sans-serif; letter-spacing: 2px;" class="mb-2">
+                    CREATE ACCOUNT
+                </h1>
+                <p class="riot-label mb-5">Join the Valorant Support Portal</p>
+
+                <!-- Form submits to our new POST /register route -->
+                <form th:action="@{/register}" method="POST">
+
+                    <div class="mb-4 text-start">
+                        <label class="riot-label mb-2 d-block">Choose a Username</label>
+                        <input type="text" name="username" class="form-control riot-input" required autofocus />
+                    </div>
+
+                    <div class="mb-5 text-start">
+                        <label class="riot-label mb-2 d-block">Choose a Password</label>
+                        <input type="password" name="password" class="form-control riot-input" required />
+                    </div>
+
+                    <button type="submit" class="btn-valorant w-100" style="padding: 15px; font-size: 1.2rem;">REGISTER NOW</button>
+
+                    <a href="/login" class="btn-riot-back d-block mt-4">Already have an account? Sign In</a>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

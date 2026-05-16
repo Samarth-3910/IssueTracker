@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Issue Details</title>
+    <th:block th:replace="~{fragments :: header-css}"></th:block>
+</head>
+<body>
+
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div class="container mt-5 mb-5">
+
+    <a href="/" class="btn-riot-back mb-4 d-inline-block">← Back to Dashboard</a>
+
+    <!-- The Main Clean Panel -->
+    <div class="riot-panel shadow-lg">
+        <div class="row">
+
+            <!-- LEFT SIDE: Title & Description (Like "Riot ID" in your screenshot) -->
+            <div class="col-md-6 pe-md-5">
+                <h2 class="mb-3" th:text="${issue.title}" style="font-family: 'Segoe UI', sans-serif; text-transform: none; font-weight: 700;"></h2>
+                <p style="color: #a0a0a0; font-size: 1.05rem; white-space: pre-wrap;" th:text="${issue.description}"></p>
+
+                <!-- Attached Screenshot -->
+                <div th:if="${issue.screenshotFilename != null}" class="mt-5 pt-3">
+                    <div class="riot-label mb-3">Attached Evidence</div>
+                    <a th:href="@{/uploads/{file}(file=${issue.screenshotFilename})}" target="_blank">
+                        <img th:src="@{/uploads/{file}(file=${issue.screenshotFilename})}" style="max-width: 100%; border-radius: 4px; border: 1px solid #333;"/>
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE: Meta Data & Controls (Like "Game Name / Tagline" boxes) -->
+            <div class="col-md-6 border-start ps-md-5" style="border-color: #333 !important;">
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="riot-sub-panel">
+                            <div class="riot-label">Issue ID</div>
+                            <div class="riot-value" th:text="'#' + ${issue.id}"></div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="riot-sub-panel">
+                            <div class="riot-label">Category</div>
+                            <div class="riot-value" th:text="${issue.category}"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="riot-sub-panel">
+                            <div class="riot-label">Created</div>
+                            <div class="riot-value" style="font-size: 1rem;" th:text="${#temporals.format(issue.createdAt, 'dd-MMM-yyyy')}"></div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="riot-sub-panel">
+                            <div class="riot-label">Current Status</div>
+                            <!-- Small accent color just for Open status, otherwise white -->
+                            <div class="riot-value" th:text="${issue.status}" th:style="${issue.status == 'Open'} ? 'color: #ff4655;' : 'color: #ffffff;'"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Status Update Form -->
+                <div sec:authorize="hasRole('ADMIN')">
+                    <div class="mt-4 pt-4 border-top" style="border-color: #333 !important;">
+                        <div class="riot-label mb-3">Admin Controls</div>
+
+                        <form th:action="@{/updateStatus/{id}(id=${issue.id})}" method="POST" class="d-flex align-items-center">
+                            <!-- Dark customized dropdown -->
+                            <select name="status" class="form-select me-3" style="background-color: #2b2b2b; color: #fff; border: 1px solid #444; border-radius: 4px; box-shadow: none;">
+                                <option value="Open" th:selected="${issue.status == 'Open'}">Open</option>
+                                <option value="In Progress" th:selected="${issue.status == 'In Progress'}">In Progress</option>
+                                <option value="Resolved" th:selected="${issue.status == 'Resolved'}">Resolved</option>
+                                <option value="Closed" th:selected="${issue.status == 'Closed'}">Closed</option>
+                            </select>
+
+                            <!-- The exact subdued save button from your screenshot -->
+                            <button type="submit" class="btn-riot-save text-nowrap">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

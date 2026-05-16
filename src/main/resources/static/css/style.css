@@ -1,0 +1,239 @@
+/* --- VALORANT DESIGN SYSTEM --- */
+:root {
+    --val-red: #ff4655;
+    --val-dark: #111111;
+    --val-gray: #768079;
+    --val-light: #ece8e1;
+}
+
+body {
+    /* The Signature Valorant Diagonal Background */
+    background: linear-gradient(135deg, #0f1923 0%, #0f1923 45%, #19232d 45%, #19232d 100%);
+    background-attachment: fixed; /* Keeps the background perfectly still when scrolling */
+    color: var(--val-light); /* Makes all default text off-white */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Valorant Headings (Sharp, Bold, Uppercase) */
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Oswald', sans-serif !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Custom Valorant Primary Button */
+.btn-valorant {
+    background-color: var(--val-red);
+    color: #fff;
+    border: none;
+    border-radius: 0; /* NO rounded corners in Valorant! */
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-valorant:hover {
+    background-color: var(--val-dark);
+    color: var(--val-light);
+}
+
+/* Custom Dark Cards for the Dashboard */
+.card-valorant {
+    background-color: var(--val-dark);
+    color: var(--val-light);
+    border: none;
+    border-radius: 0;
+    border-bottom: 4px solid var(--val-red); /* The signature red underline */
+}
+
+/* Sharp inputs */
+.form-control, .form-select {
+    border-radius: 0;
+    border: 1px solid var(--val-gray);
+}
+.form-control:focus, .form-select:focus {
+    box-shadow: none;
+    border-color: var(--val-red);
+}
+
+/* --- CLEAN RIOT UI DESIGN --- */
+.riot-panel {
+    background-color: #1e1e1e;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    padding: 40px;
+    color: #ece8e1;
+}
+
+.riot-sub-panel {
+    background-color: #2b2b2b;
+    border-radius: 4px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.riot-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #a0a0a0;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.riot-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Subdued Save Button from your Screenshot */
+.btn-riot-save {
+    background-color: transparent;
+    border: 1px solid #555555;
+    color: #888888;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-riot-save:hover {
+    border-color: #ece8e1;
+    color: #ece8e1;
+}
+
+/* Minimalist Back link */
+.btn-riot-back {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+.btn-riot-back:hover {
+    color: #ffffff;
+}
+
+/* --- RIOT DASHBOARD TABLE --- */
+.riot-table {
+    color: #ece8e1;
+    width: 100%;
+    border-collapse: collapse;
+}
+.riot-table th {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #a0a0a0;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 15px 10px;
+    border-bottom: 1px solid #333333;
+}
+.riot-table td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #2b2b2b;
+    vertical-align: middle;
+}
+.riot-table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.03); /* Subtle highlight on hover */
+}
+
+/* Sharp minimal status badge (No rounded corners!) */
+.status-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid transparent;
+}
+.status-open {
+    color: #ff4655;
+    border-color: rgba(255, 70, 85, 0.3);
+    background-color: rgba(255, 70, 85, 0.1);
+}
+.status-other {
+    color: #a0a0a0;
+    border-color: rgba(160, 160, 160, 0.3);
+    background-color: rgba(160, 160, 160, 0.1);
+}
+
+/* Minimal Text Action Link */
+.riot-action-link {
+    color: #a0a0a0;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+}
+.riot-action-link:hover {
+    color: #ff4655;
+}
+
+/* Dark Search Inputs */
+.riot-search-input {
+    background-color: #1e1e1e !important;
+    border: 1px solid #333333 !important;
+    color: #ece8e1 !important;
+    border-radius: 0;
+}
+.riot-search-input:focus {
+    border-color: #555555 !important;
+    box-shadow: none !important;
+}
+
+/* --- PREMIUM RIOT FORM INPUTS --- */
+.riot-form-panel {
+    background-color: #1e1e1e;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.riot-input {
+    background-color: #2b2b2b !important;
+    border: 1px solid #444444 !important;
+    color: #ece8e1 !important;
+    border-radius: 4px !important;
+    padding: 12px 15px !important;
+    transition: all 0.2s ease;
+}
+
+.riot-input:focus {
+    background-color: #1e1e1e !important;
+    border-color: #ff4655 !important; /* Subtle Valorant Red highlight when typing */
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* Customizing the ugly default "Choose File" button */
+.riot-input::file-selector-button {
+    background-color: #1e1e1e;
+    color: #a0a0a0;
+    border: 1px solid #444;
+    padding: 6px 12px;
+    border-radius: 2px;
+    margin-right: 15px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.riot-input::file-selector-button:hover {
+    background-color: #ff4655;
+    color: #fff;
+    border-color: #ff4655;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Riot Login</title>
+    <th:block th:replace="~{fragments :: header-css}"></th:block>
+</head>
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+
+<!-- We don't want the Navbar on the login page, we want a centered box -->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+
+            <div class="riot-form-panel text-center pb-5 pt-5">
+
+                <!-- The Logo / Title -->
+                <h1 style="color: var(--val-red); font-family: 'Oswald', sans-serif; letter-spacing: 2px;" class="mb-2">
+                    VALORANT
+                </h1>
+                <p class="riot-label mb-5">Support Portal Authentication</p>
+
+                <!-- Spring Security expects the form to POST to /login and use 'username' and 'password' -->
+                <form th:action="@{/login}" method="POST">
+
+                    <!-- Display an error if they type the wrong password -->
+                    <div th:if="${param.error}" class="alert alert-danger p-2 mb-4" style="border-radius: 0; background-color: rgba(255, 70, 85, 0.1); border: 1px solid #ff4655; color: #ff4655;">
+                        Invalid username or password.
+                    </div>
+
+                    <!-- Display a message if they just logged out -->
+                    <div th:if="${param.logout}" class="alert alert-success p-2 mb-4" style="border-radius: 0; background-color: rgba(0, 255, 127, 0.1); border: 1px solid #00ff7f; color: #00ff7f;">
+                        You have been logged out.
+                    </div>
+
+                    <div class="mb-4 text-start">
+                        <label class="riot-label mb-2 d-block">Username</label>
+                        <input type="text" name="username" class="form-control riot-input" required autofocus />
+                    </div>
+
+                    <div class="mb-5 text-start">
+                        <label class="riot-label mb-2 d-block">Password</label>
+                        <input type="password" name="password" class="form-control riot-input" required />
+                    </div>
+
+                    <button type="submit" class="btn-valorant w-100" style="padding: 15px; font-size: 1.2rem;">SIGN IN</button>
+                    <a href="/register" class="btn-riot-back d-block mt-4">Create an Account</a>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

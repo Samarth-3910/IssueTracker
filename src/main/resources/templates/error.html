@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Oops! Error</title>
+    <th:block th:replace="~{fragments :: header-css}"></th:block>
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div class="container text-center mt-5">
+    <h1 class="text-danger">Oops! Something went wrong.</h1>
+    <p class="lead">Don't worry, our engineers have been notified.</p>
+
+    <div class="alert alert-warning mt-4">
+        <!-- THIS DISPLAYS THE EXACT ERROR MESSAGE PASSED FROM OUR EXCEPTION HANDLER -->
+        <strong>Error Details:</strong> <span th:text="${errorMessage}"></span>
+    </div>
+
+    <a href="/" class="btn btn-primary mt-3">Back to Homepage</a>
+</div>
+</body>
+</html>
