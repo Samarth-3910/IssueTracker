@@ -1,10 +1,10 @@
-# Valorant Support Portal
+# Issue Support Portal
 
 A professional, enterprise-grade issue tracking web application built with a custom gaming-centric UI/UX. Features a fully-fledged Role-Based Access Control (RBAC) system, secure file uploads, and a dynamic frontend.
 
 ## Tech Stack
 
-*   **Backend:** Java 17, Spring Boot, Spring Web
+*   **Backend:** Java 26, Spring Boot, Spring Web
 *   **Security:** Spring Security (RBAC), BCrypt Password Hashing
 *   **Database:** MySQL, Spring Data JPA (Hibernate)
 *   **Frontend:** Thymeleaf, HTML5, Vanilla CSS, Bootstrap 5
